@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "clustify"
+version = "0.1.0"
+description = ""
+authors = ["Felix Engel <Felix.Engel@mail.de>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12" 
+spotipy = "^2.22.0"
+numpy = "^1.24.1"
+pandas = "^1.5.2"
+scipy = "^1.10.0"
+tqdm = "^4.64.1"
+
+
+[tool.poetry.group.build.dependencies]
+pyinstaller = "^5.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
