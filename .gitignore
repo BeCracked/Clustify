@@ -4,6 +4,13 @@ _build/
 data/
 *.pkl
 
+# Secret files
+.env
+
+# Built files
+run.sh
+dist/
+
 ## Python
 # Byte-compiled / optimized / DLL files
 **__pycache__/**
