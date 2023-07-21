@@ -30,7 +30,15 @@ Then you can run the `song_distance` routine with `Clustify song_distance` to ge
 
 An example output would be:
 ```
-
+$ clustify song_distance "https://open.spotify.com/track/3z8h0TU7ReDPLIbEnYhWZb?si=57e5e9e21455418d"
+Song: Bohemian Rhapsody - Queen
+[('Esstresso', 0.716),
+ ('парить', 0.781),
+ ('Gittaren Nostalgie', 0.786),
+ ('Thrown Back Too Far', 0.802),
+ ('Sans', 0.807),
+ ('Grüne Nostalgie', 0.808),
+ ('Я не понимаю', 0.812)]
 ```
 
 Lower number means the song is "closer" to the playlist.
