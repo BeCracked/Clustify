@@ -52,14 +52,13 @@ Uses poetry for environment management.
 Run `poetry install` to install the virtual environment.
 
 ### Spotipy
-Set the three environment variable required for app-user authentication.
+Ensure the three environment variables required for app-user authentication are set (see [Usage](#usage)).
 
 ### Building
 This step is optional.
 
 Ensure you have `pyinstaller` in your poetry venv (run `poetry install --with build`).
 Then run `build.sh` and the finished executable for your OS can be found in the `dist` folder.
-
 
 ### Installation
 
