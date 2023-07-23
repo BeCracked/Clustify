@@ -18,15 +18,15 @@ There is a lot that can still be done to improve the results, such as
 
 ## Usage
 
-NOTE: If you did not build the Clustify app substitute `Clustify` with `poetry run python src/clustify/run.py` in the following commands.
+NOTE: If you did not build the Clustify app substitute `clustify` with `poetry run python src/clustify/run.py` in the following commands.
 
-On the first run you need to execute `Clustify --refresh_cache --user <username>` to cache the metadata and audio features of your playlists.
+On the first run you need to execute `clustify --refresh_cache --user <username>` to cache the metadata and audio features of your playlists.
 Ensure the environment variables for Spotipy are set correctly.
 This includes the `SPOTIPY_CLIENT_ID`, `SPOTIPY_CLIENT_SECRET` and `SPOTIPY_REDIRECT_URI` variables (see [spotipy docs](https://spotipy.readthedocs.io/en/2.22.0/?highlight=URI#authorization-code-flow)).
 `SPOTIPY_REDIRECT_URI` should be set to `http://localhost:8080/` for the app-user authentication.
 A browser window will open and you need to copy the url you are redirected to into the terminal.
 
-Then you can run the `song_distance` routine with `Clustify song_distance` to get a list of the most similar playlist for the currently playing song.
+Then you can run the `song_distance` routine with `clustify song_distance` to get a list of the most similar playlist for the currently playing song.
 
 An example output would be:
 ```
@@ -43,8 +43,8 @@ Song: Bohemian Rhapsody - Queen
 
 Lower number means the song is "closer" to the playlist.
 
-You can also check for a specific song by its id with `Clustify song_distance <song_id>`.
-E.g., `Clustify song_distance "https://open.spotify.com/track/4u7EnebtmKWzUH433cf5Qv?si=90b17bda87184889"`.
+You can also check for a specific song by its id with `clustify song_distance <song_id>`.
+E.g., `clustify song_distance "https://open.spotify.com/track/4u7EnebtmKWzUH433cf5Qv?si=90b17bda87184889"`.
 
 ## Dev Quickstart
 ### Python
