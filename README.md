@@ -70,9 +70,9 @@ The `run.sh` script is created by `build.sh` script and can be used to run clust
 Fot this only the `.env` file must be created in the project directory, which contains the secret environment variables.
 The `env` file should look like this:
 ```
-SPOTIPY_CLIENT_ID=<your_client_id>
-SPOTIPY_CLIENT_SECRET=<your_client_secret>
-SPOTIPY_REDIRECT_URI=http://localhost:8080/
+export SPOTIPY_CLIENT_ID=<your_client_id>
+export SPOTIPY_CLIENT_SECRET=<your_client_secret>
+export SPOTIPY_REDIRECT_URI=https://localhost/
 ```
 The link command for this is ```ln -s `pwd`/run.sh ~/.local/bin/clustify```.
 
