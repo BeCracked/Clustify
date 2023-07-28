@@ -24,9 +24,11 @@ def main():
         args.cache_path = f"data/playlist_data-{args.user}.pkl"
 
     if args.refresh_cache:
+        pass
         refresh_cache(args.cache_path, args.user)
 
-    args.func(args)
+    if hasattr(args, "func"):
+        args.func(args)
 
 
 def refresh_cache(path: str, user: str):
