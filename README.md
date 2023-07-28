@@ -16,14 +16,46 @@ There is a lot that can still be done to improve the results, such as
 - comparing playlists
 - ...
 
+## Dev Quickstart
+### Python
+Uses poetry for environment management.
+Run `poetry install` to install the virtual environment.
+
+### Spotipy
+Ensure the environment variables for Spotipy `SPOTIPY_CLIENT_ID`, `SPOTIPY_CLIENT_SECRET` and `SPOTIPY_REDIRECT_URI` are set correctly (see [spotipy docs](https://spotipy.readthedocs.io/en/2.22.0/?highlight=URI#authorization-code-flow)).
+`SPOTIPY_REDIRECT_URI` should be set to `https://localhost/` for the local app-user authentication.
+
+_Alternatively_ to setting the environment variables, you can create the `.env` file in this project and use the `run.sh` script to run clustify.
+The `run.sh` script is created by `build.sh` script and can be used to run clustify from anywhere.
+For this only the `.env` file must be created in the project directory, which contains the secret environment variables.
+The `env` file should look like this:
+```
+export SPOTIPY_CLIENT_ID=<your_client_id>
+export SPOTIPY_CLIENT_SECRET=<your_client_secret>
+export SPOTIPY_REDIRECT_URI=https://localhost/
+```
+This is somewhat hacky but spares you from having go define the secrets globally.
+
+### Building
+This step is optional.
+
+Ensure you have `pyinstaller` in your poetry venv (run `poetry install --with build`).
+Then run `build.sh` and the finished executable for your OS can be found in the `dist` folder.
+
+### Installation
+
+Under linux you can make clustify executable from everywhere for you current user by linking it to `~/.local/bin` with ```ln -s `pwd`/dist/clustify ~/.local/bin/clustify```.
+For this to work you need to have your spotipy environment variables set globally, i.g. in your `.bashrc` or `.zshrc` file.
+
+The link command for this is ```ln -s `pwd`/run.sh ~/.local/bin/clustify```.
+
+NOTE: The `run.sh` script is a quite hacky solution and might not work for everyone. During build time the current working directory is hardcoded into the script. If you move the project folder after building, the script will not work anymore.
+
 ## Usage
 
 NOTE: If you did not build the Clustify app substitute `clustify` with `poetry run python src/clustify/run.py` in the following commands.
 
 On the first run you need to execute `clustify --refresh_cache --user <username>` to cache the metadata and audio features of your playlists.
-Ensure the environment variables for Spotipy are set correctly.
-This includes the `SPOTIPY_CLIENT_ID`, `SPOTIPY_CLIENT_SECRET` and `SPOTIPY_REDIRECT_URI` variables (see [spotipy docs](https://spotipy.readthedocs.io/en/2.22.0/?highlight=URI#authorization-code-flow)).
-`SPOTIPY_REDIRECT_URI` should be set to `http://localhost:8080/` for the app-user authentication.
 A browser window will open and you need to copy the url you are redirected to into the terminal.
 
 Then you can run the `song_distance` routine with `clustify song_distance` to get a list of the most similar playlist for the currently playing song.
@@ -45,35 +77,3 @@ Lower number means the song is "closer" to the playlist.
 
 You can also check for a specific song by its id with `clustify song_distance <song_id>`.
 E.g., `clustify song_distance "https://open.spotify.com/track/4u7EnebtmKWzUH433cf5Qv?si=90b17bda87184889"`.
-
-## Dev Quickstart
-### Python
-Uses poetry for environment management.
-Run `poetry install` to install the virtual environment.
-
-### Spotipy
-Ensure the three environment variables required for app-user authentication are set (see [Usage](#usage)).
-
-### Building
-This step is optional.
-
-Ensure you have `pyinstaller` in your poetry venv (run `poetry install --with build`).
-Then run `build.sh` and the finished executable for your OS can be found in the `dist` folder.
-
-### Installation
-
-Under linux you can make clustify executable from everywhere for you current user by linking it to `~/.local/bin` with ```ln -s `pwd`/dist/clustify ~/.local/bin/clustify```.
-For this to work you need to have your spotipy environment variables set globally, i.g. in your `.bashrc` or `.zshrc` file.
-
-_Alternatively_, you create the `.env` file in this project and use the `run.sh` script to run clustify.
-The `run.sh` script is created by `build.sh` script and can be used to run clustify from anywhere.
-Fot this only the `.env` file must be created in the project directory, which contains the secret environment variables.
-The `env` file should look like this:
-```
-export SPOTIPY_CLIENT_ID=<your_client_id>
-export SPOTIPY_CLIENT_SECRET=<your_client_secret>
-export SPOTIPY_REDIRECT_URI=https://localhost/
-```
-The link command for this is ```ln -s `pwd`/run.sh ~/.local/bin/clustify```.
-
-NOTE: The `run.sh` script is a quite hacky solution and might not work for everyone. During build time the current working directory is hardcoded into the script. If you move the project folder after building, the script will not work anymore.
